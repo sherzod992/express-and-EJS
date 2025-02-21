@@ -1,43 +1,42 @@
-console.log('Web serverni boshlash');
-
-const express = require('express');
-const app = express();
-const http = require('http');
-const res = require('express/lib/response');
-const fs = require('fs');
-
+const express = require("express");
+const http = require("http");
+const fs = require("fs");
 
 let user;
-fs.readFile("databese/user.json", "utf8", (err, data) => {
-    if(err){
-        console.log("ERROR",err);
-    }else{
-        user = JSON.parse(data);
-    }
-})
+fs.readFile("database/user.json", "utf8", (err, data) => {
+  if (err) {
+    console.log(err);
+  } else {
+    user = JSON.parse(data);
+  }
+});
 
-// Static fayllar uchun public papkani ko'rsatish
-app.use(express.static('public'));
+// Express ilovasini yaratish
+const app = express();
+app.use(express.static("public"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// EJS ko'rinishini sozlash
-app.set("views", "views");
-app.set('view engine', 'ejs');
+// View engine sozlash
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
-app.post('/create-item', (req, res)=>{
+// Routing
+app.post("/create-item", (req, res) => {
+  res.json({ test: "success" });
 });
+
+app.get("/", (req, res) => {
+  res.render("harid");
+});
+
 app.get("/author", (req, res) => {
-    res.render('author', {user: user});
+  res.render("author", { user: user });
 });
 
-app.get('/', (req, res) => {
-    res.render('harid'); // index.ejs ni render qilish
-});
-
-
-const server = http.createServer(app);
+// Server yaratish
 let PORT = 3000;
-server.listen(PORT, function () {
-    console.log('Server is running on PORT: ' + PORT);
+const server = http.createServer(app);
+server.listen(PORT, () => {
+  console.log(`Server is running on PORT: ${PORT}`);
 });
