@@ -34,7 +34,7 @@ app.get("/", (req, res) => {
   res.render("harid");
 });
 
-//// author page route
+
 app.get("/author", (req, res) => {
   res.render("author", { user: user });
 });
@@ -45,3 +45,4 @@ const server = http.createServer(app);
 server.listen(PORT, () => {
   console.log(`this app is running in port: ${PORT}`);
 });
+console.log("server is running");
