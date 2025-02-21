@@ -1,43 +1,47 @@
-console.log('Server-side code running');
+const express = require("express");
+const http = require("http");
+const fs = require("fs");
 
-const express = require('express');
+let user;
+fs.readFile("database/user.json", "utf8", (err, data) => {
+  if (err) {
+    console.log(err);
+  } else {
+    user = JSON.parse(data);
+  }
+});
+
+//app
 const app = express();
-const http = require('http');
-const path = require('path');
-
-// Static fayllar uchun public papkani ko'rsatish
-app.use(express.static('public'));
-app.use(express.json());
+// 1 express kirish code
+app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
-// EJS ko'rinishini sozlash
-app.set("views", "views");
-app.set('view engine', 'ejs');
+//2 sessions code
+//3 views code
+app.set("views", "./views");
+app.set("view engine", "ejs");
 
-// Asosiy sahifa
-app.get('/', (req, res) => {
-    res.render('harid'); // index.ejs ni render qilish
+//4 routing code
+//form in harid has action sending it to /create-item
+app.post("/create-item", (req, res) => {
+  res.json({ test: "success" });
 });
 
-
-app.post('/create-item', (req, res)=>{
-    console.log(req.body);
-    res.json({test: 'success'});
+///main page rendering harid.ejs in views
+app.get("/", (req, res) => {
+  res.render("harid");
 });
 
-const server = http.createServer(app);
+//// author page route
+app.get("/author", (req, res) => {
+  res.render("author", { user: user });
+});
+
+//creating server with https
 let PORT = 3000;
-server.listen(PORT, function () {
-    console.log('Server is running on PORT: ' + PORT);
+const server = http.createServer(app);
+server.listen(PORT, () => {
+  console.log(`this app is running in port: ${PORT}`);
 });
-
-
-// consolda korish
-console.log(__dirname,"bu dirname yonalishi boladi");
-console.log(path.join(__dirname, 'person' , "bu dirname person yonalishi boladi"));
-app.use((req, res, next) => {
-    console.log(`Requested route: ${req.originalUrl}`); // Qaysi route so'rov qilinganligini ko'rsatish
-    next(); // Keyingi middleware'ga o'tish
-});
-
-
