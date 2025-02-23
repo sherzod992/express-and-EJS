@@ -2,6 +2,7 @@ const express = require("express");
 const http = require("http");
 const fs = require("fs");
 
+// Reading user data
 let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
   if (err) {
@@ -18,30 +19,28 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-//2 sessions code
-//3 views code
+// views setup
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-//4 routing code
-//form in harid has action sending it to /create-item
+// routing
 app.post("/create-item", (req, res) => {
   res.json({ test: "success" });
 });
 
-///main page rendering harid.ejs in views
 app.get("/", (req, res) => {
-  res.render("harid");
+  res.render("harid");  // Render harid.ejs
 });
 
-// author page route
 app.get("/author", (req, res) => {
-  res.render("author", { user: user });
+  res.render("author", { user: user });  // Pass user data to author.ejs
 });
 
-//creating server with https
+// create and run server
 let PORT = 3000;
 const server = http.createServer(app);
 server.listen(PORT, () => {
-  console.log(`this app is running in port: ${PORT}`);
+  console.log(`This app is running on port: ${PORT}`);
 });
+
+console.log("server is running");
