@@ -1,4 +1,3 @@
-/* main */
 .frame {
     width: 100%;
     height: 100%;
@@ -337,14 +336,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 ta ustun */
-    gap: 20px;
-    justify-items: center;
-}
-.services_cards:nth-child(3) {
-    grid-template-columns: repeat(2, 1fr); /* 2 ta ustun */
 }
 
 .services_item {

@@ -2,54 +2,46 @@ const express = require("express");
 const http = require("http");
 const fs = require("fs");
 
-// User ma'lumotlarini yuklash
-let user = {}; // Default qiymat
-
+let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
   if (err) {
-    console.log("Faylni o‘qishda xatolik:", err);
+    console.log(err);
   } else {
-    try {
-      user = JSON.parse(data);
-    } catch (parseErr) {
-      console.log("JSON faylni parse qilishda xatolik:", parseErr);
-    }
+    user = JSON.parse(data);
   }
 });
 
-// Express app yaratish
+//app
 const app = express();
-
-// Middleware-lar
+// 1 express kirish code
 app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-// View sozlamalari
+//2 sessions code
+//3 views code
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
-// Routing
+//4 routing code
+//form in harid has action sending it to /create-item
 app.post("/create-item", (req, res) => {
   res.json({ test: "success" });
 });
 
+///main page rendering harid.ejs in views
 app.get("/", (req, res) => {
-  res.render("harid"); // harid.ejs render qiladi
+  res.render("harid");
 });
 
+//author page route
 app.get("/author", (req, res) => {
-  if (Object.keys(user).length === 0) {
-    return res.status(500).json({ error: "User ma'lumotlari hali yuklanmadi" });
-  }
   res.render("author", { user: user });
 });
 
-// Serverni yaratish va ishga tushirish
-const PORT = 3000;
+//creating server with https
+let PORT = 3000;
 const server = http.createServer(app);
 server.listen(PORT, () => {
-  console.log(`This app is running on port: ${PORT}`);
+  console.log(`this app is running in port: ${PORT}`);
 });
-
-console.log("Server is running...");

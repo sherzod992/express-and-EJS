@@ -1,3 +1,4 @@
+
 const letterCounter = (target, string) => {
     let count = 0; 
     for (let i = 0; i < string.length; i++) {
@@ -19,7 +20,6 @@ letterCounter("l", "Ko‘pincha davlatlar vatandoshlik berishda ikkita mezondan 
 //     "Yoshlarga investitsiya qiling",
 //     "Endi dam oling, foydasi yo`q",
 // ];
-
 // function maslahatBering(age, callback) {
 //     if (typeof age !== "number") return callback("Insert number", null);
 //     if (age <= 20) callback(null, list[0]);
