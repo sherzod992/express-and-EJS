@@ -1,20 +1,28 @@
-const { MongoClient } = require("mongodb");
+const http = require("http");
+const mongodb = require("mongodb");
 
-// MongoDB connection string
-const connectingString = "mongodb+srv://sherzodbek:79Zm266pdcwnsdSR@cluster0.lfh2h.mongodb.net/Reja?retryWrites=true&w=majority";
+//mongo db connection
+let db;
+const MONGO_URL =
+    "mongodb+srv://sherzodbek:79Zm266pdcwnsdSR@cluster0.lfh2h.mongodb.net/Reja?retryWrites=true&w=majority";
 
-// MongoDB connection
-MongoClient.connect(connectingString, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(client => {
-        console.log("db: connected successfully");
-        const db = client.db();
-        const PORT = 3000;
-        const app = require("./app");
-        const server = require("http").createServer(app);
-        server.listen(PORT, () => {
-            console.log(`server: this app is running on port: ${PORT} http://localhost:${PORT}`);
-        });
-    })
-    .catch(error => {
-        console.log("Error connecting to MongoDB:", error);
-    });
+//using connect function of mongo db
+
+mongodb.connect(
+    MONGO_URL,
+    { useNewUrlParser: true, useUnifiedTopology: true },
+    (error, client) => {
+        if (error) {
+            console.log(error);
+        } else {
+            const PORT = 3000;
+            console.log("db:connected succesfully");
+            module.exports = client;
+            const app = require("./app");
+            const server = http.createServer(app);
+            server.listen(PORT, () => {
+                console.log(`server: this app is running in port: ${PORT} `);
+            });
+        }
+    }
+);

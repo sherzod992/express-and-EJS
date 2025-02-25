@@ -1,14 +1,28 @@
-
-const letterCounter = (target, string) => {
-    let count = 0; 
-    for (let i = 0; i < string.length; i++) {
-        if (target === string[i]) {
+const countDigits = (string) => {
+    let count = 0;
+    for (let char of string) {
+        if (!isNaN(char) && char !== " ") {
             count++;
         }
     }
-    console.log("count:", count);
-    return count;
+    console.log(count);
 };
+
+countDigits("fdsf34jlk546jl867");
+
+
+
+
+// const letterCounter = (target, string) => {
+//     let count = 0; 
+//     for (let i = 0; i < string.length; i++) {
+//         if (target === string[i]) {
+//             count++;
+//         }
+//     }
+//     console.log("count:", count);
+//     return count;
+// };
 
 letterCounter("l", "Ko‘pincha davlatlar vatandoshlik berishda ikkita mezondan biriga qaraydi: qonga yoki yerga.");
 
