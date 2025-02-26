@@ -1,5 +1,6 @@
 const express = require("express");
 console.log("app: started");
+const mongodb = require("mongodb");
 //app
 const app = express();
 
@@ -32,6 +33,7 @@ app.post("/create-item", (req, res) => {
   );
 });
 
+///main page rendering plan.ejs in views
 app.get("/", (req, res) => {
   db.collection("plansCollection")
     .find()

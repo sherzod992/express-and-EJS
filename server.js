@@ -1,13 +1,13 @@
+
 const http = require("http");
 const mongodb = require("mongodb");
 
 //mongo db connection
 let db;
 const MONGO_URL =
-    "mongodb+srv://sherzodbek:79Zm266pdcwnsdSR@cluster0.lfh2h.mongodb.net/Reja?retryWrites=true&w=majority";
+    "mongodb+srv://sherzodbek:HqnxajAg0uDzfh6S@albert.umhuk.mongodb.net/?retryWrites=true&w=majority&appName=albert";
 
 //using connect function of mongo db
-
 mongodb.connect(
     MONGO_URL,
     { useNewUrlParser: true, useUnifiedTopology: true },
