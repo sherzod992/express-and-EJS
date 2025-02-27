@@ -1,12 +1,10 @@
-console.log("Web Serverni boshlash");
-
 const express = require("express");
 console.log("app: started");
 const mongodb = require("mongodb");
 //app
 const app = express();
 
-// mongoga aloqaga chiqish
+//to use client in app
 const db = require("./server").db();
 
 // 1 express kirish code
@@ -14,26 +12,34 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-
-
-
+//2 sessions code
+//3 views code
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
+//4 routing code
+//form in harid has action sending it to /create-item
 app.post("/create-item", (req, res) => {
   const new_data = req.body.item;
   db.collection("plansCollection").insertOne(
     { item: new_data },
     (err, data) => {
-      if (err) {
-        console.log(err);
-      } else {
-        console.log("added to db");
-      }
+      res.json(data.ops[0]);
+    }
+  );
+});
+//delete route
+app.post("/delete-item", (req, res) => {
+  const id = req.body.id;
+  db.collection("plansCollection").deleteOne(
+    { _id: new mongodb.ObjectId(id) },
+    (err, data) => {
+      res.json({ state: "succes" });
     }
   );
 });
 
+///main page rendering plan.ejs in views
 app.get("/", (req, res) => {
   db.collection("plansCollection")
     .find()
