@@ -1,14 +1,24 @@
-const countDigits = (string) => {
-    let count = 0;
-    for (let char of string) {
-        if (!isNaN(char) && char !== " ") {
-            count++;
-        }
-    }
-    console.log(count);
+const checkContent = (s1, s2) => {
+    let string1 = s1.toLowerCase().split(" ").join("");
+    let string2 = s2.toLowerCase().split(" ").join("");
+    return string1 === string2;
 };
 
-countDigits("fdsf34jlk546jl867");
+console.log(checkContent("Mitgroup", "mitgroup")); // true
+
+
+
+// const countDigits = (string) => {
+//     let count = 0;
+//     for (let char of string) {
+//         if (!isNaN(char) && char !== " ") {
+//             count++;
+//         }
+//     }
+//     console.log(count);
+// };
+
+// countDigits("fdsf34jlk546jl867");
 
 
 
