@@ -1,7 +1,7 @@
 {
-  "name": "plan",
+  "name": "reja",
   "version": "1.0.0",
-  "description": "Plan project",
+  "description": "bu bizning birinchi loyihamiz",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -9,19 +9,11 @@
     "train": "nodemon train.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [
-    "plan",
-    "reja",
-    "schedule"
-  ],
-  "author": "Sherzpd_dev",
+  "author": "sherzod",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.10",
     "express": "^4.21.2",
     "mongodb": "^3.2.6"
-  },
-  "devDependencies": {
-    "nodemon": "^3.1.9"
   }
 }

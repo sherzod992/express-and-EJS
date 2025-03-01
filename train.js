@@ -34,7 +34,7 @@ console.log(checkContent("Mitgroup", "mitgroup")); // true
 //     return count;
 // };
 
-letterCounter("l", "Ko‘pincha davlatlar vatandoshlik berishda ikkita mezondan biriga qaraydi: qonga yoki yerga.");
+//letterCounter("l", "Ko‘pincha davlatlar vatandoshlik berishda ikkita mezondan biriga qaraydi: qonga yoki yerga.");
 
 // const list = [
 //     "Yaxshi talaba bo`ling",

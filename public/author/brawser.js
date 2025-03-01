@@ -8,7 +8,7 @@ function itemTemplate(item) {
           <div>
             <button 
             data-id="${item._id}"
-             class="edit-me btn btn-secondary btn-sm mr-1">
+            class="edit-me btn btn-secondary btn-sm mr-1">
               O'zgartirish
             </button>
             <button data-id="${item._id}" class="delete-me btn btn-danger btn-sm">O'chirish</button>
@@ -24,6 +24,8 @@ document.getElementById("create-form").addEventListener("submit", function (e) {
   axios
     .post("/create-item", { reja: createField.value })
     .then((response) => {
+      console.log(response);
+      console.log(createField);
       document.getElementById("item-list")
         .insertAdjacentHTML("beforeend", itemTemplate(response.data));
       createField.value = "";
