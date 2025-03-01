@@ -49,7 +49,7 @@ app.post('/edit-item', (req, res) => {
 app.post('/delete-all', (req, res) => {
   if (req.body.delete_all) {
     db.collection('plans').deleteMany(() => {
-      res.json({ state: 'delete all' });
+      res.json({ state: 'Hamma rejalar ochiridi' });
     });
   }
 });
