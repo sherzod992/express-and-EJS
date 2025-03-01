@@ -16,6 +16,15 @@ app.use(express.urlencoded({ extended: true }));
 app.set('views', 'views');
 app.set('view engine', 'ejs');
 
+let user;
+fs.readFile("database/user.json", "utf8", (err, data) => {
+  if (err) {
+    console.log("ERROR:", err);
+  } else {
+    user = JSON.parse(data)
+  }
+});
+
 // 4. Routing code
 app.post('/create-item', (req, res) => {
   console.log('user entered /create-item');
