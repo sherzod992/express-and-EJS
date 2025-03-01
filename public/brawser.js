@@ -56,22 +56,49 @@ document.addEventListener('click', function (e) {
 
   // Tahrirlash
   if (e.target.classList.contains('edit-me')) {
-    alert('siz edit tugmasini bosdiz')
+    let userInput = prompt(
+      "O'zgarish kiriting",
+      e.target.parentElement.parentElement.querySelector('.item-text').innerHTML
+    );
+    if (userInput) {
+      axios
+        .post("/edit-item", {
+          id: e.target.getAttribute("data-id"),
+          new_input: userInput,
+
+        })
+        .then((response) => {
+          console.log(response.data);
+          e.target.parentElement.parentElement.querySelector('.item-text').innerHTML = userInput;
+        }).catch((err) => {
+          console.log('Iltimos, qaytadan harakat qiling!');
+        });
+    }
   }
-})
+});
 
 // Barcha vazifalarni tozalash
 cleanAllButton.addEventListener('click', function () {
   if (confirm("Barcha vazifalarni o'chirishni xohlaysizmi?")) {
     axios
       .post('/delete-all', { delete_all: true })
-      .then(response => {
+      .then((response) => {
         alert(response.data.state)
-        // Ro'yxatni tozalash
-        itemList.innerHTML = ''
+        e.target.parentElement.parentElement.querySelector('.item-text').innerHTML = userInput;
+
       })
       .catch(err => {
-        console.error('Iltimos, qaytadan harakat qiling!', err)
+        console.log('Iltimos, qaytadan harakat qiling!', err)
       })
   }
-})
+});
+
+cleanAllButton.addEventListener('click', function () {
+  axios.post('/delete-all', { delete_all: true }).then((response) => {
+    alert(response.data.state);
+    // Ro'yxatni tozalash
+    itemList.innerHTML = '';
+  }).catch((err) => {
+    console.error('Iltimos, qaytadan harakat qiling!', err);
+  });
+});

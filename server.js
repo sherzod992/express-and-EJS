@@ -1,5 +1,5 @@
 const http = require('http') // http core modulini yuklaymiz
-const mongodb = require('mongodb') // mongo db 
+const mongodb = require('mongodb') // mongo db -
 
 let db
 const connectionString =
