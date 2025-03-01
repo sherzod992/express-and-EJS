@@ -55,8 +55,7 @@ app.post('/delete-all', (req, res) => {
 });
 
 app.get('/author', (req, res) => {
-  const user = "user: user }"; // user nomi aniq berilishi kerak
-  res.render('author', { user: user });
+  res.render('author', { user: user })
 });
 
 app.get('/', function (req, res) {
