@@ -42,7 +42,7 @@ createForm.addEventListener('submit', function (e) {
 document.addEventListener('click', function (e) {
   // O'chirish
   if (e.target.classList.contains('delete-me')) {
-    if (confirm('Are you sure?')) {
+    if (confirm('Aniq ochirmoqchimisiz?')) {
       axios
         .post('/delete-item', { id: e.target.getAttribute('data-id') })
         .then(() => {
