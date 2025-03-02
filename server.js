@@ -1,18 +1,20 @@
+// http va db modullarini chaqiramiz http core mongodb express
+
 const http = require('http') // http core modulini yuklaymiz
 const mongodb = require('mongodb') // mongo db -
 
-let db
+let db // dbni global qilib ochamiz
 const connectionString =
     'mongodb+srv://sherzod:OWg9XKSI7d8BBNVW@cluster0.pwocx.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0';
-// connection string
+// string ichiga mongo db urlni joylemiz
 // mongodb connect faqa mongo dbni ulash uchun ishlatiladi
 mongodb.connect(
-    connectionString,
+    connectionString, // tepadagi url
     {
         useNewUrlParser: true, // eski versiyalarda ishlatilgan 
         useUnifiedTopology: true,
     },
-    (err, client) => {
+    (err, client) => { // error yoki client 
         if (err) console.log('MongoDB ulanishida xatolik yuz berdi')
         // err = error (xatolik)
         else {
@@ -27,7 +29,7 @@ mongodb.connect(
             // http yaratish
 
             let PORT = process.env.PORT || 3000 // Server ishlaydigan port
-            server.listen(PORT, function () {
+            server.listen(PORT, function () { // port ikkitadan bittasi ochiladi 
                 console.log(
                     `Server muvaffaqiyatli ishga tushdi! Port: ${PORT}, http://localhost:${PORT}`
                 );

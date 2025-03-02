@@ -4,8 +4,8 @@ const fs = require('fs');
 const app = express();
 
 // MongoDB call qilamiz
-const db = require('./server').db();
-const mongodb = require('mongodb');
+const db = require('./server').db(); // server modulidan db ni chaqiramiz
+const mongodb = require('mongodb'); //ma'lumotlarni boshqarish imkonini beradi.-
 
 // 1. Kirish kodlari
 app.use(express.static('public'));
