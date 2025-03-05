@@ -1,3 +1,10 @@
+// class Shop {} → do‘kon yaratamiz.
+// constructor(non, lagmon, cola) {...} → uchta mahsulot qabul qiladi.
+// this.products = {...} → mahsulotlarni obyekt sifatida saqlaymiz.
+// getTime() → xozirgi vaqtni olish.
+// qoldiq() → mahsulot qoldig‘ini chiqarish.
+// sotish(nomi, miqdori) → mahsulotni kamaytirish.
+// qabul(nomi, miqdori) → mahsulot qo‘shish.
 class Shop {
     constructor(non, lagmon, cola) {
         this.products = { non, lagmon, cola };
