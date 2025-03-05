@@ -1,10 +1,48 @@
-const checkContent = (s1, s2) => {
-    let string1 = s1.toLowerCase().split(" ").join("");
-    let string2 = s2.toLowerCase().split(" ").join("");
-    return string1 === string2;
-};
+class Shop {
+    constructor(non, lagmon, cola) {
+        this.products = { non, lagmon, cola };
+    }
 
-console.log(checkContent("Mitgroup", "mitgroup")); // true
+    getTime() {
+        let now = new Date();
+        return now.toLocaleTimeString();
+    }
+
+    qoldiq() {
+        console.log(
+            `Hozir ${this.getTime()}da ${this.products.non}ta non, ${this.products.lagmon}ta lagmon va ${this.products.cola}ta cola mavjud!`
+        );
+    }
+
+    sotish(nomi, miqdori) {
+        if (this.products[nomi] >= miqdori) {
+            this.products[nomi] -= miqdori;
+            console.log(`Hozir ${this.getTime()}da ${miqdori}ta ${nomi} sotildi!`);
+        } else {
+            console.log(`Hozir ${this.getTime()}da yetarlicha ${nomi} yo'q!`);
+        }
+    }
+
+    qabul(nomi, miqdori) {
+        this.products[nomi] += miqdori;
+        console.log(`Hozir ${this.getTime()}da ${miqdori}ta ${nomi} qabul qilindi!`);
+    }
+}
+
+const shop = new Shop(4, 5, 2);
+shop.qoldiq();
+shop.sotish("non", 3);
+shop.qabul("cola", 4);
+shop.qoldiq();
+
+
+// const checkContent = (s1, s2) => {
+//     let string1 = s1.toLowerCase().split(" ").join("");
+//     let string2 = s2.toLowerCase().split(" ").join("");
+//     return string1 === string2;
+// };
+
+// console.log(checkContent("Mitgroup", "mitgroup")); // true
 
 
 

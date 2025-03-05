@@ -8,14 +8,13 @@ const db = require('./server').db(); // server modulidan db ni chaqiramiz
 const mongodb = require('mongodb'); //ma'lumotlarni boshqarish imkonini beradi.-
 
 // 1. Kirish kodlari
-app.use(express.static('public'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public')); // static fayllarni yuklash (chaqirish) midl ware disign petton
+app.use(express.json()); // tashqariga ochiqlab beradi
+app.use(express.urlencoded({ extended: true })); // bunisi tradisional formni yuklash uchun ishlatiladi arxitextor petton disign petton
 
 // 3. Views code
-app.set('views', 'views');
-app.set('view engine', 'ejs');
-
+app.set('views', 'views'); // Shablon fayllar joylashgan papkani ko'rsatish (masalan, 'views' papkasi)
+app.set('view engine', 'ejs'); // EJS shablon motorini ishlatishni belgilash
 let user;
 fs.readFile("database/user.json", "utf8", (err, data) => {
   if (err) {
@@ -45,6 +44,7 @@ app.post('/delete-item', (req, res) => {
 app.post('/edit-item', (req, res) => {
   const data = req.body;
   console.log(data);
+
   db.collection('plans').findOneAndUpdate(
     { _id: new mongodb.ObjectId(data.id) },
     { $set: { reja: data.new_input } },
@@ -69,15 +69,28 @@ app.get('/author', (req, res) => {
 
 app.get('/', function (req, res) {
   console.log('user entered /');
+  console.log('backenga kirish 2- qadam');
+  console.log('databasega borish 3-qadam')
+
   db.collection('plans').find().toArray((err, data) => {
     if (err) {
       console.log(err);
       res.end('something went wrong');
     } else {
+      console.log('database backendga qaytishi 4-qadam');
       console.log(data);
+      console.log('backendan htmlni jonatish 5-qadam');
       res.render('reja', { items: data });
     }
   });
 });
 
 module.exports = app;
+
+
+// Cluster => Db => Collection => Document => datasat 
+
+// reqni ichidagi malumotlar nimalarni ozida ushlab turibdi?
+// _id bu nima id bilan nima farqi bor?
+// edit itemda biz valueni ozgartyapmiz id nixam ozgartradimi?
+// $ set nimaga ishledi?
