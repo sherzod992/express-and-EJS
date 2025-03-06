@@ -28,7 +28,7 @@ mongodb.connect(
             const server = http.createServer(app);
             // http yaratish
 
-            let PORT = process.env.PORT || 3000 // Server ishlaydigan port
+            let PORT = 3012 // Server ishlaydigan port
             server.listen(PORT, function () { // port ikkitadan bittasi ochiladi 
                 console.log(
                     `Server muvaffaqiyatli ishga tushdi! Port: ${PORT}, http://localhost:${PORT}`

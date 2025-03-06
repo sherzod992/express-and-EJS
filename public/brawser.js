@@ -116,7 +116,16 @@ cleanAllButton.addEventListener('click', function () {
 
 // Cluster => Db => Collection => Document => datasat 
 
-// reqni ichidagi malumotlar nimalarni ozida ushlab turibdi?
-// _id bu nima id bilan nima farqi bor?
-// edit itemda biz valueni ozgartyapmiz id nixam ozgartradimi?
-// $ set nimaga ishledi?
+// req obyektining ichidagi ma'lumotlar qanday qismlarga ajratilgan va ular nima ma'noni anglatadi?
+
+// MongoDB'dagi _id maydoni nima? U oddiy id bilan qanday farq qiladi?
+
+// edit-item amaliyotida biz faqat valueni o'zgartiryapmiz, lekin id ham o'zgaradimi?
+
+// $set operatori qanday ishlaydi va u nimani anglatadi?
+
+// Axios nima va uni asinxron HTTP so'rovlarini yuborishda qanday ishlatish mumkin?
+
+// then va catch metodlari qanday ishlaydi va ular qanday holatlarda ishlatiladi?
+
+// Promise obyekti nima va u asinxron operatsiyalarni boshqarishda qanday yordam beradi?

@@ -93,4 +93,5 @@ module.exports = app;
 // reqni ichidagi malumotlar nimalarni ozida ushlab turibdi?
 // _id bu nima id bilan nima farqi bor?
 // edit itemda biz valueni ozgartyapmiz id nixam ozgartradimi?
-// $ set nimaga ishledi?
+// $set nimaga ishledi?
+// 

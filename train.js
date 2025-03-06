@@ -1,46 +1,46 @@
-// class Shop {} → do‘kon yaratamiz.
-// constructor(non, lagmon, cola) {...} → uchta mahsulot qabul qiladi.
-// this.products = {...} → mahsulotlarni obyekt sifatida saqlaymiz.
-// getTime() → xozirgi vaqtni olish.
-// qoldiq() → mahsulot qoldig‘ini chiqarish.
-// sotish(nomi, miqdori) → mahsulotni kamaytirish.
-// qabul(nomi, miqdori) → mahsulot qo‘shish.
-class Shop {
-    constructor(non, lagmon, cola) {
-        this.products = { non, lagmon, cola };
-    }
-
-    getTime() {
-        let now = new Date();
-        return now.toLocaleTimeString();
-    }
-
-    qoldiq() {
-        console.log(
-            `Hozir ${this.getTime()}da ${this.products.non}ta non, ${this.products.lagmon}ta lagmon va ${this.products.cola}ta cola mavjud!`
-        );
-    }
-
-    sotish(nomi, miqdori) {
-        if (this.products[nomi] >= miqdori) {
-            this.products[nomi] -= miqdori;
-            console.log(`Hozir ${this.getTime()}da ${miqdori}ta ${nomi} sotildi!`);
-        } else {
-            console.log(`Hozir ${this.getTime()}da yetarlicha ${nomi} yo'q!`);
-        }
-    }
-
-    qabul(nomi, miqdori) {
-        this.products[nomi] += miqdori;
-        console.log(`Hozir ${this.getTime()}da ${miqdori}ta ${nomi} qabul qilindi!`);
-    }
+// task D
+function s(a) {
+    return a.toLowerCase().split("").reverse().join("");
 }
+console.log(s("Hello")); // olleh
+console.log(s(123456)); // 654321
 
-const shop = new Shop(4, 5, 2);
-shop.qoldiq();
-shop.sotish("non", 3);
-shop.qabul("cola", 4);
-shop.qoldiq();
+// class Shop {
+//     constructor(non, lagmon, cola) {
+//         this.products = { non, lagmon, cola };
+//     }
+
+//     getTime() {
+//         let now = new Date();
+//         return now.toLocaleTimeString();
+//     }
+
+//     qoldiq() {
+//         console.log(
+//             `Hozir ${this.getTime()}da ${this.products.non}ta non, ${this.products.lagmon}ta lagmon va ${this.products.cola}ta cola mavjud!`
+//         );
+//     }
+
+//     sotish(nomi, miqdori) {
+//         if (this.products[nomi] >= miqdori) {
+//             this.products[nomi] -= miqdori;
+//             console.log(`Hozir ${this.getTime()}da ${miqdori}ta ${nomi} sotildi!`);
+//         } else {
+//             console.log(`Hozir ${this.getTime()}da yetarlicha ${nomi} yo'q!`);
+//         }
+//     }
+
+//     qabul(nomi, miqdori) {
+//         this.products[nomi] += miqdori;
+//         console.log(`Hozir ${this.getTime()}da ${miqdori}ta ${nomi} qabul qilindi!`);
+//     }
+// }
+
+// const shop = new Shop(4, 5, 2);
+// shop.qoldiq();
+// shop.sotish("non", 3);
+// shop.qabul("cola", 4);
+// shop.qoldiq();
 
 
 // const checkContent = (s1, s2) => {
